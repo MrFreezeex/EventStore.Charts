@@ -37,7 +37,7 @@ You can access the Event Store admin interface:
 
       kubectl port-forward svc/{{ include "eventstore.fullname" . }}-admin {{ .Values.extHttpPort }}
     {{- end }}
-    {{- if not .Values.admin.password }}
+    {{- if not .Values.admin.secretPassword }}
 
     The default username and password is admin:changeit
     {{- end }}

@@ -1,4 +1,4 @@
-{{- if .Values.admin.password -}}
+{{- if .Values.admin.secretPassword -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -34,4 +34,10 @@ spec:
           volumeMounts:
             - name: script
               mountPath: "/usr/local/script"
+          env:
+            - name: ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: "{{ .Values.admin.secretPassword }}"
+                  key: password
 {{- end -}}

@@ -43,9 +43,8 @@ admin:
   jobImage: tutum/curl
   jobImageTag: latest
   ##
-  ## Admin password. Set using a separate `values.yaml` file
-  ## or using `--set admin.password=<your admin password>.
-  # password: changeit
+  ## Admin password with a secret ressource
+  # secretPassword: changeit
   ##
   ## Service type for admin interface.
   serviceType: ClusterIP

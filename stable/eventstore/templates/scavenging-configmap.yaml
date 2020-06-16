@@ -29,7 +29,7 @@ data:
             -si \
             -d {} \
             -X POST \
-            -u 'admin:{{ .Values.admin.password | default "changeit" }}' \
+            -u "admin:${ADMIN_PASSWORD:-changeit}" \
             "http://localhost:{{ .Values.intHttpPort }}/admin/scavenge"
       done
 

@@ -31,6 +31,14 @@ spec:
                   mountPath: /usr/local/bin/es-scavenging
                   subPath: es-scavenging
                   readOnly: true
+              env:
+              {{- if .Values.admin.secretPassword }}
+                - name: ADMIN_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: "{{ .Values.admin.secretPassword }}"
+                      key: password
+              {{- end }}
               resources:
                 requests:
                   cpu: 100m
